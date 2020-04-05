@@ -30,4 +30,9 @@ class KaryawanController extends Controller
             "message" => "Karyawan record created"
         ], 201);
     }
+
+    // public function detailKaryawan($nik)
+    // {   
+    //     $detailKary = Karyawan::($nik);
+    // }
 }

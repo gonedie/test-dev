@@ -23,3 +23,4 @@ Route::get('/', function () {
 
 Route::get('/karyawan', 'KaryawanController@index');
 Route::post('/karyawan/input-karyawan', 'KaryawanController@store');
+Route::get('/karyawan/{nik}', 'KaryawanController@detailKaryawan');
