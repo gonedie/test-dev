@@ -31,9 +31,9 @@ class KaryawanController extends Controller
         ], 201);
     }
 
-    public function detailKaryawan($nik)
+    public function detailKaryawan($id)
     {   
-        $detailKary = Karyawan::find($nik);
+        $detailKary = Karyawan::find($id);
         return response($detailKary, 200);
     }
 }
