@@ -45,8 +45,10 @@ class KaryawanController extends Controller
             $res['value']   = $newKaryawan;
             return response($res); 
         }else{
-            $res["message"] = "Fail Created Data";
-            return response($res);
+            return response()->json([
+                'status'    => 500,
+                'paramater' => $newKaryawan
+            ]);
         }
     }
 
