@@ -35,10 +35,14 @@ class KaryawanController extends Controller
             'first_name'  => 'required',
             'last_name'   => 'required'
         ]);
-        Karyawan::create($newKaryawan);
-        return response()->json([
-            "message" => "Karyawan record created"
-        ], 201);
+        if (Karyawan::create($newKaryawan)){
+            $res['message'] = "Success";
+            $res['value']   = "$newKaryawan";
+            return response($res); 
+        }else{
+            $res["message"] = "Fail Created Data";
+            return response($res);
+        }
     }
 
     public function detailKaryawan($id)
@@ -47,11 +51,11 @@ class KaryawanController extends Controller
 
         if(count($detailKary) > 0){
             $res["status"]   = 200;
-            $res["messages"] = "Success";
+            $res["message"] = "Success";
             $res['values']   = $detailKary;
             return response($res);
         }else{
-            $res["messages"] = "Data not found";
+            $res["message"] = "Data not found";
             return response($res);
         }
     }
