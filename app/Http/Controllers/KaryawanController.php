@@ -35,34 +35,24 @@ class KaryawanController extends Controller
 
     public function store(Request $request)
     {
-        $newKaryawan = $request->validate(request()->all(), [
+        $newKaryawan = $request->validate([
             'nik'         => 'required',
             'first_name'  => 'required',
             'last_name'   => 'required'
         ]);
-
-        if($newKaryawan->fails()){
+        
+        if (Karyawan::create($newKaryawan)){
             return response()->json([
-                'status'    => 500,
-                'success'   => false
-            ]);
+                'status'  => 200,
+                'success' => true,
+                'values'  => $newKaryawan
+            ]); 
         }else{
-            if(Karyawan::create($newKaryawan)){
-                return response()->json([
-                    'status'    => 200,
-                    'success'   => true
-                ]);
-            }
+            return response()->json([
+                'status'  => 500,
+                'success' => false
+            ]);
         }
-
-        // if (Karyawan::create($newKaryawan)){
-        //     $res['message'] = "Success";
-        //     $res['value']   = $newKaryawan;
-        //     return response($res); 
-        // }else{
-        //     $res["message"] = "Fail Created Data";
-        //     return response($res);
-        // }
     }
 
     public function detailKaryawan($id)
