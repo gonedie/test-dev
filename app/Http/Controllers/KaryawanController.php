@@ -10,6 +10,7 @@ class KaryawanController extends Controller
     public function index()
     {
         $nasabah = Karyawan::all();
+        
         if(count($nasabah) > 0){
             $res["status"]   = 200;
             $res["messages"] = "Success";
@@ -42,7 +43,17 @@ class KaryawanController extends Controller
 
     public function detailKaryawan($id)
     {   
-        $detailKary = Karyawan::find($id);
-        return response($detailKary, 200);
+        $detailKary = Karyawan::find('nik', $id)->get();
+
+        if(count($detailKary) > 0){
+            $res["status"]   = 200;
+            $res["messages"] = "Success";
+            $res['values']   = $detailKary;
+            return response($res);
+        }else{
+            $res["status"]   = 204;
+            $res["messages"] = "Data not found";
+            return response($res);
+        }
     }
 }
