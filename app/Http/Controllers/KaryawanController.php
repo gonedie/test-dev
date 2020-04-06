@@ -10,7 +10,16 @@ class KaryawanController extends Controller
     public function index()
     {
         $nasabah = Karyawan::all();
-        return response($nasabah, 200);
+        if(count($nasabah) > 0){
+            $res["status"]   = 200;
+            $res["messages"] = "Success";
+            $res['values']   = $nasabah;
+            return response($res);
+        }else{
+            $res["status"]   = 204;
+            $res["messages"] = "Data Empty";
+            return response($res);
+        }
     }
 
     // public function inputNasabah()
