@@ -16,7 +16,10 @@ class KaryawanController extends Controller
             // $res["messages"] = "Success";
             // $res['values']   = $nasabah;
             // return response($res);
-            return response()->json($nasabah, 200, $headers);
+            return response()->json([
+                'status'  => 200,
+                'success' => true
+            ]);
         }else{
             $res["status"]   = 204;
             $res["messages"] = "Data Empty";
