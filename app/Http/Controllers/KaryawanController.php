@@ -37,7 +37,7 @@ class KaryawanController extends Controller
         ]);
         if (Karyawan::create($newKaryawan)){
             $res['message'] = "Success";
-            $res['value']   = "$newKaryawan";
+            $res['value']   = $newKaryawan;
             return response($res); 
         }else{
             $res["message"] = "Fail Created Data";
