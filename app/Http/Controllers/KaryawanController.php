@@ -43,7 +43,7 @@ class KaryawanController extends Controller
 
     public function detailKaryawan($id)
     {   
-        $detailKary = Karyawan::find('nik', $id)->get();
+        $detailKary = Karyawan::where('nik', $id)->get();
 
         if(count($detailKary) > 0){
             $res["status"]   = 200;
