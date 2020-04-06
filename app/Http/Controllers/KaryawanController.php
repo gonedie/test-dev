@@ -35,7 +35,7 @@ class KaryawanController extends Controller
 
     public function store(Request $request)
     {
-        $newKaryawan = $request->validate(request()->all(), [
+        $newKaryawan = $request->validate([
             'nik'         => 'required',
             'first_name'  => 'required',
             'last_name'   => 'required'
@@ -44,11 +44,9 @@ class KaryawanController extends Controller
             $res['message'] = "Success";
             $res['value']   = $newKaryawan;
             return response($res); 
-        }elseif($newKaryawan -> fails()){
-            return response()->json([
-                'status'    => 500,
-                'parameter' => request()->all()
-            ]);
+        }else{
+            $res["message"] = "Fail Created Data";
+            return response($res);
         }
     }
 
