@@ -40,14 +40,29 @@ class KaryawanController extends Controller
             'first_name'  => 'required',
             'last_name'   => 'required'
         ]);
-        if (Karyawan::create($newKaryawan)){
-            $res['message'] = "Success";
-            $res['value']   = $newKaryawan;
-            return response($res); 
+
+        if($newKaryawan->fails()){
+            return response()->json([
+                'status'    => 500,
+                'success'   => false
+            ]);
         }else{
-            $res["message"] = "Fail Created Data";
-            return response($res);
+            if(Karyawan::create($newKaryawan)){
+                return response()->json([
+                    'status'    => 200,
+                    'success'   => true
+                ]);
+            }
         }
+
+        // if (Karyawan::create($newKaryawan)){
+        //     $res['message'] = "Success";
+        //     $res['value']   = $newKaryawan;
+        //     return response($res); 
+        // }else{
+        //     $res["message"] = "Fail Created Data";
+        //     return response($res);
+        // }
     }
 
     public function detailKaryawan($id)
