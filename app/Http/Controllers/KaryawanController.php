@@ -18,7 +18,8 @@ class KaryawanController extends Controller
             // return response($res);
             return response()->json([
                 'status'  => 200,
-                'success' => true
+                'success' => true,
+                'values'  => $nasabah
             ]);
         }else{
             $res["status"]   = 204;
