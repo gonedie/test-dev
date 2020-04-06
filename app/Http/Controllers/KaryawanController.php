@@ -44,10 +44,10 @@ class KaryawanController extends Controller
             $res['message'] = "Success";
             $res['value']   = $newKaryawan;
             return response($res); 
-        }else{
+        }elseif($newKaryawan -> fails()){
             return response()->json([
                 'status'    => 500,
-                'paramater' => request()->all()
+                'parameter' => request()->all()
             ]);
         }
     }
