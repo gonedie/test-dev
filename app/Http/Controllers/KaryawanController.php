@@ -51,7 +51,6 @@ class KaryawanController extends Controller
             $res['values']   = $detailKary;
             return response($res);
         }else{
-            $res["status"]   = 204;
             $res["messages"] = "Data not found";
             return response($res);
         }

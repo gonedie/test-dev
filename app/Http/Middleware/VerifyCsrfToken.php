@@ -19,6 +19,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        // for secure cross-site request forgery (CSRF) attacks.
+        '*/'
     ];
 }
