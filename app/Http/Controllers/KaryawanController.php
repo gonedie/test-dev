@@ -12,10 +12,11 @@ class KaryawanController extends Controller
         $nasabah = Karyawan::all();
         
         if(count($nasabah) > 0){
-            $res["status"]   = 200;
-            $res["messages"] = "Success";
-            $res['values']   = $nasabah;
-            return response($res);
+            // $res["status"]   = 200;
+            // $res["messages"] = "Success";
+            // $res['values']   = $nasabah;
+            // return response($res);
+            return response()->json($nasabah, 200, $headers);
         }else{
             $res["status"]   = 204;
             $res["messages"] = "Data Empty";
