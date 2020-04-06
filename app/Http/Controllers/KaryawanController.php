@@ -35,7 +35,7 @@ class KaryawanController extends Controller
 
     public function store(Request $request)
     {
-        $newKaryawan = $request->validate([
+        $newKaryawan = $request->validate(request()->all(), [
             'nik'         => 'required',
             'first_name'  => 'required',
             'last_name'   => 'required'
@@ -47,7 +47,7 @@ class KaryawanController extends Controller
         }else{
             return response()->json([
                 'status'    => 500,
-                'paramater' => $newKaryawan
+                'paramater' => request()->all()
             ]);
         }
     }
